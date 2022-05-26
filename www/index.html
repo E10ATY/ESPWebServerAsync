@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+  <meta charset='UTF-8'>
+  <script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+      if (this.readyState == 4) {
+        if (this.status == 200) {
+          document.getElementById('status').innerHTML = this.responseText;
+        }
+        else {
+          document.getElementById('status').innerHTML = 'Disconnected';
+      }
+      } 
+    };
+
+    function powerSwitch() {
+      xhttp.open('GET', '/switch', true);
+      xhttp.send();
+    }
+  </script>
+</head>
+<title>Remote LED</title>
+<body>
+  <input type="button" onclick="powerSwitch()" value="Switch" />
+  <p id="status">LED Status</p>
+</body>
+</html>
